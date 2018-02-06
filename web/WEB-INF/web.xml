@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--<filter>
+        <filter-name>FirstFilter</filter-name>
+        <filter-class>com.imooc.filter.FirstFilter</filter-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>zhangsan</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FirstFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FirstFilter</filter-name>
+        <url-pattern>/main.jsp</url-pattern>
+        <dispatcher>include</dispatcher>
+    </filter-mapping>-->
+    <!--
+    <filter>
+        <filter-name>SecondFilter</filter-name>
+        <filter-class>com.imooc.filter.SecondFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecondFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+  -->
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+      <error-code>500</error-code>
+      <location>/error500.jsp</location>
+    </error-page>
+    <filter>
+        <filter-name>ErrorFilter</filter-name>
+        <filter-class>com.imooc.filter.ErrorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ErrorFilter</filter-name>
+        <url-pattern>/error.jsp</url-pattern>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>AsynServlet</servlet-name>
+        <servlet-class>com.imooc.servlet.AsynServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AsynServlet</servlet-name>
+        <url-pattern>/servlet/AsynServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
